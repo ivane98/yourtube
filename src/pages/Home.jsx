@@ -15,7 +15,7 @@ const Home = ({ type }) => {
   useEffect(() => {
     const fetchVideos = async () => {
       const res = await axios.get(
-        `https://yourtube-api.onrender.com/api/videos/${type}`
+        `${process.env.REACT_APP_BASE_URL}/videos/${type}`
       );
       setVideos(res.data);
     };

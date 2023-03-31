@@ -16,17 +16,21 @@ const Search = () => {
 
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await axios.get(`/videos/search${query}`);
+      const res = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/videos/search${query}`
+      );
       setVideos(res.data);
     };
     fetchVideos();
   }, [query]);
 
-  return <Container>
-    {videos.map(video=>(
-      <Card key={video._id} video={video}/>
-    ))}
-  </Container>;
+  return (
+    <Container>
+      {videos.map((video) => (
+        <Card key={video._id} video={video} />
+      ))}
+    </Container>
+  );
 };
 
 export default Search;
